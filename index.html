@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A general-purpose vision language model for surgery">
+  <meta name="keywords" content="Surgical VLM, Surgical Data Science, Medical NLP, Deep Learning, Surgical Language Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Laboratory</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link rel="icon" href="./favicon.ico">
+
+  <meta property="og:site_name" content="Agent Laboratory: Using LLMs as Research Assistants" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:title" content="Agent Laboratory: Using LLMs as Research Assistants" />
+  <meta property="og:description" content="by Samuel Schmidgall at JHU" />
+  <meta property="og:url" content="https://agentlaboratory.github.io/" />
+  <meta property="og:image" content="https://agentlaboratory.github.io/static/images/preview_srt.gif" />
+  <meta property="og:image:secure" content="https://agentlaboratory.github.io/static/images/preview_srt.gif" />
+  <meta property="og:video" content="" />
+  <meta property="og:video:secure" content="" />
+  <meta property="og:image:width" content="1280" />
+  <meta property="og:image:height" content="720" />
+
+  <meta property="article:publisher" content="https://agentlaboratory.github.io" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Agent Laboratory: Using LLMs as Research Assistants" />
+  <meta name="twitter:description" content="by Samuel Schmidgall at JHU " />
+  <meta name="twitter:url" content="https://agentlaboratory.github.io/" />
+  <meta name="twitter:image" content="https://agentlaboratory.github.io/static/images/preview_srt.gif" />
+  <meta name="twitter:site" content="@SRSchmidgall" />
+  <meta name="twitter:card" content="player" />
+  <meta name="twitter:player" content="" />
+  <meta name="twitter:player:width" content="1280" />
+  <meta name="twitter:player:height" content="720" />
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-two-thirds is-centered has-text-centered">
+          <h1 class="title is-1 publication-title">Agent Laboratory:</h1>
+          <h2 class="subtitle is-2 publication-subtitle">Using LLM Agents as Research Assistants</h2>
+          
+          <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+            <img src="./static/images/logo_jh.jpg" alt="Secondary Logo" style="width: 60%;">
+          </div>
+            <div class="publication-links">
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://agentlaboratory.github.io"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://agentlaboratory.github.io" class="external-link button is-normal is-rounded is-dark" target="_blank">
+                  <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                  </span>
+                  <span>Code (coming soon)</span>
+                </a>
+              </span>
+              
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-two-thirds has-text-centered">
+            <img src="resources/imgs/Agent-Laboratory.png" alt="Descriptive text about the image" style="max-width: 100%; height: auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recently, major progress has been made toward automating complex tasks that traditionally require a team of humans, including solving repository-level GitHub issues and training machine learning models to solve Kaggle challenges. These systems not only demonstrate high performance, but are also being translated into tools that improve human productivity. However, to date, there is an absence of tools that can assist human researchers similar to code assistants, such as GitHub Copilot and Cursor AI. Toward this, we introduce Agent Laboratory, an open-source large language model (LLM) agent framework for accelerating the individual's ability to perform research, specifically in the machine learning domain.  Unlike previous work, where agents produce their own research topics, this work aims to function as a tool to assist human scientists to perform their own research ideas using language agents, rather than automate the entire process. Agent Laboratory takes a human-produced research idea as input and outputs a code repository and a research report.  This is accomplished through the use of specialized agents driven by LLMs that collaborate to perform research based on the human's preference for the agent's involvement.  In order to accommodate all users, Agent Laboratory is compute flexible, where various levels of resources can be allocated based on the individual’s access to compute (e.g. CPU, GPU, memory) and model inference budget (open-source or closed-source LLM back-ends). We hope Agent Laboratory enables researchers to allocate more effort toward creative ideation and experiment design rather than low-level coding and writing, and ultimately accelerate scientific discovery.
+         
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container content">
+    <h2 class="titile">BibTeX</h2>
+    <pre><code>@inproceedings{schmidgall2024AgentLaboratory,
+  author    = {Samuel Schmidgall},
+  title     = {Agent Laboratory: Using LLMs as Research Assistants},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>Page template borrowed from <a href="https://nerfies.github.io/"><span class="dnerf">Nerfies</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
