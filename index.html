@@ -139,19 +139,6 @@
 
 <section class="section">
   <div class="container">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-two-thirds">
-        <h2 class="title is-2">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Recently, major progress has been made toward automating complex tasks that traditionally require a team of humans, including solving repository-level GitHub issues and training machine learning models to solve Kaggle challenges. These systems not only demonstrate high performance, but are also being translated into tools that improve human productivity. However, to date, there is an absence of tools that can assist human researchers similar to code assistants, such as GitHub Copilot and Cursor AI. Toward this, we introduce Agent Laboratory, an open-source large language model (LLM) agent framework for accelerating the individual's ability to perform research, specifically in the machine learning domain.  Unlike previous work, where agents produce their own research topics, this work aims to function as a tool to assist human scientists to perform their own research ideas using language agents, rather than automate the entire process. Agent Laboratory takes a human-produced research idea as input and outputs a code repository and a research report.  This is accomplished through the use of specialized agents driven by LLMs that collaborate to perform research based on the human's preference for the agent's involvement.  In order to accommodate all users, Agent Laboratory is compute flexible, where various levels of resources can be allocated based on the individual’s access to compute (e.g. CPU, GPU, memory) and model inference budget (open-source or closed-source LLM back-ends). We hope Agent Laboratory enables researchers to allocate more effort toward creative ideation and experiment design rather than low-level coding and writing, and ultimately accelerate scientific discovery.
-         
-          </p>
-        </div>
-      </div>
-    </div>
-
     <div class="columns is-centered has-text-centered">
       <div class="column is-two-thirds">
         <h2 class="title is-2">Video Introduction</h2>
@@ -172,33 +159,27 @@
         <div class="content has-text-justified">
           <h4 class="title is-4" style="margin-bottom: 1rem;">What does Agent Laboratory do for you?</h4>
           <p style="padding-bottom: 30px;">
-            First and foremost, Agent Laboratory is meant to assist you as the human researcher toward implementing your research ideas. You are the pilot. Agent Laboratory provides a structured framework that adapts to your computational resources, whether you're running it on a MacBook (like I did) or on a GPU cluster. Agent Laboratory consists of specialized agents driven by large language models to support you through the entire research workflow—from conducting literature reviews and formulating plans to executing experiments and writing comprehensive reports. This system is not designed to replace your creativity but to complement it, <strong>enabling you to focus on ideation and critical thinking while automating repetitive and time-intensive tasks like coding and documentation</strong>. By accommodating varying levels of computational resources and human involvement, Agent Laboratory aims to accelerate scientific discovery and optimize your research productivity.
+            First and foremost, <kbd>Agent Laboratory</kbd> is meant to assist you as the human researcher toward implementing your research ideas. You are the pilot. <kbd>Agent Laboratory</kbd> provides a structured framework that adapts to your computational resources, whether you're running it on a MacBook or on a GPU cluster. Agent Laboratory consists of specialized agents driven by large language models to support you through the entire research workflow—from conducting literature reviews and formulating plans to executing experiments and writing comprehensive reports. This system is not designed to replace your creativity but to complement it, <strong>enabling you to focus on ideation and critical thinking while automating repetitive and time-intensive tasks like coding and documentation</strong>. By accommodating varying levels of computational resources and human involvement, <kbd>Agent Laboratory</kbd> aims to accelerate scientific discovery and optimize your research productivity.
           </p>
           <h4 class="title is-4" style="margin-bottom: 1rem;">How does Agent Laboratory work?</h4>
           
           
           <p style="padding-bottom: 50px;">
-            Agent Laboratory consists of three primary phases that systematically guide the research process: (1) Literature Review, (2) Experimentation, and (3) Report Writing. During each phase, specialized agents driven by LLMs collaborate to accomplish distinct objectives, integrating external tools like arXiv, Hugging Face, Python, and LaTeX to optimize outcomes. This structured workflow begins with the independent collection and analysis of relevant research papers, progresses through collaborative planning and data preparation, and results in automated experimentation and comprehensive report generation. Details on specific agent roles and their contributions across these phases are discussed in the paper. The modular design ensures compute flexibility, accommodating diverse resource availability while maintaining efficiency in generating high-quality research artifacts.
+            <kbd>Agent Laboratory</kbd> consists of three primary phases that systematically guide the research process: (1) Literature Review, (2) Experimentation, and (3) Report Writing. During each phase, specialized agents driven by LLMs collaborate to accomplish distinct objectives, integrating external tools like arXiv, Hugging Face, Python, and LaTeX to optimize outcomes. This structured workflow begins with the independent collection and analysis of relevant research papers, progresses through collaborative planning and data preparation, and results in automated experimentation and comprehensive report generation. Details on specific agent roles and their contributions across these phases are discussed in the paper. The modular design ensures compute flexibility, accommodating diverse resource availability while maintaining efficiency in generating high-quality research artifacts.
           </p>
           <!-- Example of how to insert an image -->
           <img src="resources/imgs/Agent-Lab-Workflow.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
           <!-- You can add more <img> tags as needed -->
-          <h4 class="title is-4" style="margin-bottom: 1rem;">Solving hard ML problems</h4>
+          <h4 class="title is-4" style="margin-bottom: 1rem;">Solving ML problems</h4>
           <p style="padding-bottom: 6px;">
-            The first step toward performing research is building the capability for solving hard ML problems. Agent Laboratory addresses this through the mle-solver. This tool acts as a general purpose ML code solver, taking in research directions from previous phases as text and iteratively improving research code.
-          </p>
-          <p style="padding-bottom: 50px;">
-            To accomplish this, a collection of top programs are iteratively modified in order to improve the experimental results according to a scoring function. mle-solver takes as input the following: (1) task instructions, (2) command descriptions, and (3) distilled knowledge. Integrating this information, one of two coding commands are produced by the solver, REPLACE or EDIT. The REPLACE command entirely replaces all of the current code with new code. The EDIT command is usable after the first iteration to make sure code exists, and replaces lines indexed n through m of the current code with as many lines of new code as is produced by the solver. After a code command is executed, the new program is passed through a compiler to check for runtime errors. If it successfully compiles, a score is returned and the list of top programs is updated if the score is higher than the existing programs. If the code does not compile, the agent attempts to repair the code for N tries (N=3 in our experiments) before returning an error and moving on to a new code replacement. In both cases, the agent is encouraged to reflect on its previous command and output to provide as input to the next step.
+            The first step toward performing research is building the capability for solving ML problems. <kbd>Agent Laboratory</kbd> addresses this through the mle-solver. This tool acts as a general purpose ML code solver, taking in research directions from previous phases as text and iteratively improving research code.To accomplish this, a collection of top programs are iteratively conditioned on inputs like task instructions, command descriptions, and distilled knowledge in order to improve the experimental results according to a scoring function. It generates two commands: REPLACE, which rewrites all code, and EDIT, which modifies specific lines. Successfully compiled code updates top programs based on scores, while errors prompt up to three repair attempts before trying new code. The agent reflects on each step to refine outcomes.
           </p>
           <!-- Example of how to insert an image -->
           <img src="resources/imgs/mlebench_pf.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
           <!-- You can add more <img> tags as needed -->
           <h4 class="title is-4" style="margin-bottom: 1rem;">Writing research reports</h4>
-          <p style="padding-bottom: 6px;">
-            The second step is generating a research report based on the experiment design and results. For this we introduce the paper-solver, which focuses on report generation. This module acts as a code-to-report generator, summarizing the outputs and findings from previous experimental phases into a human-readable academic paper.
-          </p>
-          <p style="padding-bottom: 50px;">
-            paper-solver aims to act as a code report generator, positioning the work that has been produced by previous stages of Agent Laboratory. paper-solver does not aim to entirely replace the academic paper-writing process, but rather to summarize the research that has been produced in a human-readable format so that the researcher \textit{using} Agent Laboratory understands what has been accomplished. paper-solver takes as input the following: (1) the research plan, (2) experimental results, (3) insights derived from these results, and (4) a literature review to produce a cohesive research paper. The output follows the standard structure of an academic paper, ensuring it meets conference submission requirements (for the paper scoring phase) while being clear and methodical.
+          <p style="padding-bottom: 8px;">
+            The second step is generating a research report based on the experiment design and results. For this we introduce the paper-solver, which focuses on report generation. This module acts as a code-to-report generator, summarizing the outputs and findings from previous experimental phases into a human-readable academic paper. paper-solver synthesizes research from previous stages, providing researchers with a clear summary of accomplishments. It does not replace academic paper writing but aids in creating cohesive reports. Inputs include the research plan, experimental results, derived insights, and a literature review, producing outputs in the standard academic paper format suitable for conference submissions.
           </p>
           <!-- Example of how to insert an image -->
           <img src="resources/imgs/paper_workflow.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
@@ -223,9 +204,13 @@
 
 
 
-<section class="section" id="BibTeX">
+
+
+
+<section class="section">
   <div id="examples-goto" class="container content">
-    <h2 class="titile">Examples</h2>
+    <h2 class="title">Example Report</h2>
+    <iframe src="resources/imgs/examplepaper.pdf" style="width: 100%; height: 800px;" frameborder="0"></iframe>
   </div>
 </section>
 

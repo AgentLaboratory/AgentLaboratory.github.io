@@ -37,6 +37,7 @@ $(document).ready(function() {
     });
     // Get the YouTube iframe
     var youtubeFrame = $('#youtube-video-frame');
+    
 
     // Function to calculate the center and bounds of the iframe
     function isMouseNearCenter(event) {
