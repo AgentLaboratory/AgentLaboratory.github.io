@@ -35,6 +35,44 @@ $(document).ready(function() {
     $(document).one('click', function() {
         audio.play();
     });
+    // Get the YouTube iframe
+    var youtubeFrame = $('#youtube-video-frame');
+
+    // Function to calculate the center and bounds of the iframe
+    function isMouseNearCenter(event) {
+        var offset = youtubeFrame.offset(); // Get iframe's offset
+        var width = youtubeFrame.width();
+        var height = youtubeFrame.height();
+
+        // Calculate the center of the iframe
+        var centerX = offset.left + width / 2;
+        var centerY = offset.top + height / 2;
+
+        // Define a proximity radius around the center (e.g., 100px)
+        var radius = 100;
+
+        // Get mouse coordinates
+        var mouseX = event.pageX;
+        var mouseY = event.pageY;
+
+        // Check if the mouse is within the radius
+        var distance = Math.sqrt(Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2));
+        return distance < radius;
+    }
+
+    // Attach a mousemove event to the document
+    $(document).mousemove(function(event) {
+        if (isMouseNearCenter(event)) {
+            audio.pause();
+        }
+    });
+    
+
+
+    
+
+
+
 
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {

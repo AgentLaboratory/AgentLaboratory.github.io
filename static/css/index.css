@@ -141,15 +141,22 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-
+.spaced-paragraph {
+  margin-bottom: 50px;
+}
 .interpolation-panel .interpolation-image {
   width: 100%;
   border-radius: 5px;
 }
-
+iframe{
+  width:100%;
+  height:400px;
+ }
 .interpolation-video-column {
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .interpolation-panel .slider {
   margin: 0 !important;
 }
