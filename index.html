@@ -64,9 +64,9 @@
           <h1 class="title is-1 publication-title">Agent Laboratory:</h1>
           <h2 class="subtitle is-2 publication-subtitle">Using LLM Agents as Research Assistants</h2>
           <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
-            <!--img src="./static/images/logo_jh.jpg" alt="Secondary Logo" style="width: 45%;"-->
+            <img src="./static/images/amd_jhu_logo.png" alt="Primary Logo" style="width: 60%;height: 90%">
           </div>
-          <h2 class="subtitle is-5 publication-subtitle">Samuel Schmidgall</h2>
+          <h2 class="subtitle is-5 publication-subtitle"><strong>Samuel Schmidgall</strong>, Jialian Wu, Ximeng Sun, Jiang Liu, Ze Wang, and Yusheng Su</h2>
 
             <div class="publication-links">
               <!-- arXiv Link. -->
@@ -172,18 +172,65 @@
           <!-- You can add more <img> tags as needed -->
           <h4 class="title is-4" style="margin-bottom: 1rem;">Solving ML problems</h4>
           <p style="padding-bottom: 6px;">
-            The first step toward performing research is building the capability for solving ML problems. <kbd>Agent Laboratory</kbd> addresses this through the mle-solver. This tool acts as a general purpose ML code solver, taking in research directions from previous phases as text and iteratively improving research code.To accomplish this, a collection of top programs are iteratively conditioned on inputs like task instructions, command descriptions, and distilled knowledge in order to improve the experimental results according to a scoring function. It generates two commands: REPLACE, which rewrites all code, and EDIT, which modifies specific lines. Successfully compiled code updates top programs based on scores, while errors prompt up to three repair attempts before trying new code. The agent reflects on each step to refine outcomes.
+            The first step toward performing research is building the capability for solving ML problems. <kbd>Agent Laboratory</kbd> addresses this through the mle-solver. This tool acts as a general purpose ML code solver, taking in research directions from previous phases as text and iteratively improving research code. To accomplish this, a collection of top programs are iteratively conditioned on inputs like task instructions, command descriptions, and distilled knowledge in order to improve the experimental results according to a scoring function. A set of changes are generated via two commands: REPLACE, which rewrites all code, and EDIT, which modifies specific lines. Successfully compiled code updates top programs based on scores, while errors prompt up to three repair attempts before trying new code. The agent reflects on each step to refine outcomes.
           </p>
           <!-- Example of how to insert an image -->
-          <img src="resources/imgs/mlebench_pf.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
+
+          <div style="text-align: center;">
+            <img src="resources/imgs/mle-solver.png" alt="Descriptive text about the image" style="max-width: 80%; padding-bottom: 50px; height: auto;">
+          </div>
+
+          <p style="padding-bottom: 6px;">
+            <strong>MLE-Bench Evaluation:</strong> In order to assess the effectiveness of mle-solver independent of the full <kbd>Agent Laboratory</kbd> workflow, we evaluate it in isolation on a subset of 10 ML challenges from <a href="https://openai.com/index/mle-bench/">MLE-bench</a>. MLE-bench is a benchmark designed to assess the capability of agents in handling real-world ML tasks on Kaggle competitions. This benchmark compares agent performance with human baselines, scoring agents with Kaggle’s medal system, and incorporating mechanisms to mitigate contamination and plagiarism risks. We find that Agent Laboratory’s mle-solver is more consistently high scoring than other solvers, with mle-solver obtaining four medals (two gold, one silver, and one bronze) compared with OpenHands (gpt-4o) obtaining two medals (two gold), AIDE (o1-preview) obtaining two medals (one gold, one bronze) and MLAB obtaining zero medals. Additionally, mle-solver obtained above median human performance on six out of ten benchmarks, with AIDE obtaining five out of ten, OpenHands two out of ten, and MLAB zero out of ten.
+          </p>
+          <img src="resources/imgs/mlebench_graph_full.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
           <!-- You can add more <img> tags as needed -->
           <h4 class="title is-4" style="margin-bottom: 1rem;">Writing research reports</h4>
           <p style="padding-bottom: 8px;">
-            The second step is generating a research report based on the experiment design and results. For this we introduce the paper-solver, which focuses on report generation. This module acts as a code-to-report generator, summarizing the outputs and findings from previous experimental phases into a human-readable academic paper. paper-solver synthesizes research from previous stages, providing researchers with a clear summary of accomplishments. It does not replace academic paper writing but aids in creating cohesive reports. Inputs include the research plan, experimental results, derived insights, and a literature review, producing outputs in the standard academic paper format suitable for conference submissions.
+            The second step is generating a research report based on the experiment design and results. For this we introduce the paper-solver, which focuses on report generation. This module acts as a results and code-to-report generator, summarizing the outputs and findings from previous experimental phases into a human-readable academic paper. paper-solver synthesizes research from previous stages, providing researchers with a clear summary of accomplishments. Inputs include the research plan, experimental results, derived insights, and a literature review, producing outputs in the standard academic paper format suitable for conference submissions.
           </p>
           <!-- Example of how to insert an image -->
-          <img src="resources/imgs/paper_workflow.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
+          <img src="resources/imgs/paper_workflow_new.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
           <!-- You can add more <img> tags as needed -->
+          <h4 class="title is-4" style="margin-bottom: 1rem;">Human perception of quality by language model</h4>
+          <p style="padding-bottom: 8px;">
+            This study evaluated the human-perceived quality of research outputs generated by three language model backends—gpt-4o, o1-mini, and o1-preview—along three dimensions: experimental quality, report quality, and perceived usefulness. Using five research questions as templates, 15 papers were autonomously generated by Agent Laboratory and subsequently reviewed by 10 volunteer PhD students. These reviewers assessed the outputs on a scale of 1 to 5. Results revealed that o1-preview delivered the highest perceived usefulness (4.4/5) and report quality (3.4/5), though its experimental quality was slightly lower (2.9/5). The o1-mini model achieved the highest experimental quality score (3.2/5), with consistent performance across the other two dimensions. In contrast, gpt-4o scored lowest overall, particularly in experimental quality (2.6/5), though it retained a relatively strong usefulness rating of 4.0/5. These findings indicate notable differences in how well each backend aligns with researcher expectations for autonomous research generation.
+          </p>
+          <img src="resources/imgs/papers.png" alt="Descriptive text about the image" style="max-width: 100%; padding-bottom: 50px; height: auto;">
+
+          <p>The analysis further revealed that the perceived quality varied based on research topics. For instance, the word order topic received the highest average report quality (3.8/5) and usefulness (4.5/5) but shared the lowest experimental quality rating (2.7/5) with the image noise topic. The cognitive bias topic achieved the highest experimental quality (3.2/5). Variability was particularly pronounced in the image noise topic, where gpt-4o scored poorly (1.5/5 for experimental quality and 2.5/5 for usefulness) while o1-mini excelled (4.0/5 and 4.5/5, respectively).</p>
+
+
+          <h4 class="title is-4" style="margin-bottom: 1rem;">Human reviewer scores by language model</h4>
+          <p style="padding-bottom: 8px;">
+            Human reviewers evaluated papers generated by Agent Laboratory using NeurIPS-style criteria, assessing quality, significance, clarity, soundness, presentation, and contribution. Across all metrics, o1-preview achieved the highest average overall score (4.0/10), followed by o1-mini (3.8/10) and gpt-4o (3.5/10). While o1-mini excelled in quality with a score of 2.3/4 and o1-preview led in soundness (2.2/4), all models showed modest performance in significance (2.2–2.5/4) and contribution (average 2.1/4), highlighting limited originality and impact. Clarity scores varied slightly, with gpt-4o rated highest (2.6/4). Despite these differences, all models fell well below the average score of 5.9 for accepted NeurIPS papers, indicating substantial gaps in technical and methodological rigor. These findings emphasize the need for further refinement of Agent Laboratory to align with the standards of high-quality research publications.
+          </p>
+
+          <div style="text-align: center;">
+            <img src="resources/imgs/scores.png" alt="Descriptive text about the image" style="max-width: 80%; padding-bottom: 50px; height: auto;">
+          </div>
+
+
+
+          <h4 class="title is-4" style="margin-bottom: 1rem;">Co-Pilot Quality</h4>
+          <p style="padding-bottom: 8px;">
+            ABCD
+          </p>
+
+
+          <h4 class="title is-4" style="margin-bottom: 1rem;">Runtime Statistics</h4>
+          <p style="padding-bottom: 8px;">
+            The runtime and cost analysis of Agent Laboratory revealed that gpt-4o was the most computationally efficient and cost-effective model backend, completing the entire workflow in 1165.4 seconds at a cost of $2.33, significantly outperforming o1-mini and o1-preview. o1-mini and o1-preview required 3616.8 and 6201.3 seconds, respectively, with costs of $7.51 and $13.10 per workflow. gpt-4o excelled in speed and cost across key subtasks, including Running Experiments and Report Writing, where it was 3–5x faster and far cheaper than its counterparts. Despite these differences, all models achieved high reliability, with gpt-4o recording a 98.5% success rate and o1-mini and o1-preview achieving 95.7%. Report Writing emerged as the most expensive phase, particularly for o1-preview, which incurred a cost of $9.58 for this task alone. 
+          </p>
+          <div style="text-align: center;">
+            <img src="resources/imgs/stats.png" alt="Descriptive text about the image" style="max-width: 80%; padding-bottom: 50px; height: auto;">
+          </div>
+          
+          <h4 class="title is-4" style="margin-bottom: 1rem;">Related Work</h4>
+          <p style="padding-bottom: 8px;">
+            In this section, I hope to highlight many of the amazing related works being done other groups. <a href="https://www.biorxiv.org/content/10.1101/2024.11.11.623004v1.full.pdf">The Virtual Lab</a> introduces a team of LLM agents working as scientists alongside a human researcher who provides high-level feedback, with the end result being novel nanobody binders aimed at addressing recent variants of SARS-CoV-2. <a href="https://www.nature.com/articles/s42256-024-00832-8">ChemCrow</a> and Coscientist <a href="https://www.nature.com/articles/s41586-023-06792-0">Coscientist</a> demonstrate the ability for autonomous ideation and experimentation in chemistry. <a href="https://arxiv.org/pdf/2404.07738">ResearchAgent</a> automates research idea generation, experiment design, and iterative refinement using feedback from reviewing agents aligned with human evaluation criteria. <a href="https://arxiv.org/pdf/2408.06292">The AI Scientist</a> extends this automation to encompass end-to-end scientific discovery, including coding, experiment execution, and automated peer review for manuscript generation. Despite these advancements, studies the work <a href="https://arxiv.org/pdf/2409.04109">"Can LLMs Generate Novel Research Ideas?"</a> highlight limitations in the feasibility and implementation details of LLM ideation, indicating a complementary rather than replacement role for LLMs in research. 
+          </p>
+
         </div>
 
       </div>
@@ -208,7 +255,7 @@
 
 
 <section class="section">
-  <div id="examples-goto" class="container content">
+  <div id="examples" class="container content">
     <h2 class="title">Example Report</h2>
     <iframe src="resources/imgs/examplepaper.pdf" style="width: 100%; height: 800px;" frameborder="0"></iframe>
   </div>
