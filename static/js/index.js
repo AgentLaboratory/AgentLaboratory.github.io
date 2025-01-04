@@ -22,62 +22,8 @@ function setInterpolationImage(i) {
 
 
 $(document).ready(function() {
-    // Create a new Audio object with the path to your MP3 file
-    //var audio = new Audio('resources/audio/lofi-jazzhop-chillhop-praga-262035.mp3');
-
-    // Play the audio when the page loads
-    //audio.play();
-
-    // Create a new Audio object
-    // var audio = new Audio('resources/audio/lofi.mp3');
-    // audio.volume = 0.5;
-    // Play audio when the user clicks anywhere on the page
-    // $(document).one('click', function() {
-    //     audio.play();
-    // });
-    // Get the YouTube iframe
-    var youtubeFrame = $('#youtube-video-frame');
-
-
 
     
-
-    // Function to calculate the center and bounds of the iframe
-    function isMouseNearCenter(event) {
-        var offset = youtubeFrame.offset(); // Get iframe's offset
-        var width = youtubeFrame.width();
-        var height = youtubeFrame.height();
-
-        // Calculate the center of the iframe
-        var centerX = offset.left + width / 2;
-        var centerY = offset.top + height / 2;
-
-        // Define a proximity radius around the center (e.g., 100px)
-        var radius = 100;
-
-        // Get mouse coordinates
-        var mouseX = event.pageX;
-        var mouseY = event.pageY;
-
-        // Check if the mouse is within the radius
-        var distance = Math.sqrt(Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2));
-        return distance < radius;
-    }
-
-    // Attach a mousemove event to the document
-    $(document).mousemove(function(event) {
-        if (isMouseNearCenter(event)) {
-            audio.pause();
-        }
-    });
-    
-
-
-    
-
-
-
-
     // Check for click events on the navbar burger icon
     $(".navbar-burger").click(function() {
       // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
@@ -115,13 +61,6 @@ $(document).ready(function() {
     	});
     }
 
-    /*var player = document.getElementById('interpolation-video');
-    player.addEventListener('loadedmetadata', function() {
-      $('#interpolation-slider').on('input', function(event) {
-        console.log(this.value, player.duration);
-        player.currentTime = player.duration / 100 * this.value;
-      })
-    }, false);*/
     preloadInterpolationImages();
 
     $('#interpolation-slider').on('input', function(event) {
@@ -131,5 +70,6 @@ $(document).ready(function() {
     $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
+  
 
 })
