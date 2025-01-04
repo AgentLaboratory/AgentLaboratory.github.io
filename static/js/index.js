@@ -29,12 +29,12 @@ $(document).ready(function() {
     //audio.play();
 
     // Create a new Audio object
-    var audio = new Audio('resources/audio/lofi.mp3');
-    audio.volume = 0.5;
+    // var audio = new Audio('resources/audio/lofi.mp3');
+    // audio.volume = 0.5;
     // Play audio when the user clicks anywhere on the page
-    $(document).one('click', function() {
-        audio.play();
-    });
+    // $(document).one('click', function() {
+    //     audio.play();
+    // });
     // Get the YouTube iframe
     var youtubeFrame = $('#youtube-video-frame');
     
